@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<script>
+    console.log("hello world!");
+
+    console.log("実行順01");
+
+    var url = "https://docs.google.com/spreadsheets/d/1Qe7Le2CG2xR3h1swVgujM220EmWllE2nq06PvpEH9cc/edit?usp=sharing";
+
+    var xhr = new XMLHttpRequest();
+ 
+    xhr.open('GET',url,true);
+    xhr.send();
+ 
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState === 4 && xhr.status === 200) {
+      
+        console.log( JSON.parse(xhr.responseText) );
+
+      }
+    }
+
+
+    window.onload=function(){
+        console.log("実行順04");
+        for (var i=0; i<9; i++) {
+            console.log("i = "+i);
+            if(i == 5){
+                console.log("iが5です。");
+            }
+        }
+    }
+
+    jQuery(function($){
+        console.log("実行順03");
+    });
+
+    console.log("実行順02");
+
+</script>
+</body>
+</html>
